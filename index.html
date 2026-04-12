@@ -663,6 +663,8 @@ const quiz = [
 
 ];
 
+const quizBase = JSON.parse(JSON.stringify(quiz));
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -670,8 +672,13 @@ function shuffle(array) {
   }
 }
 
-shuffle(quiz);
-const quizSelection = quiz.slice(0, 20);
+function generateQuizSelection() {
+  const copy = JSON.parse(JSON.stringify(quizBase));
+  shuffle(copy);
+  return copy.slice(0, 20);
+}
+
+let quizSelection = generateQuizSelection();
 
 let currentQuestion = 0;
 let score = 0;
@@ -844,8 +851,7 @@ function restartQuiz() {
   currentQuestion = 0;
   score = 0;
 
-  shuffle(quiz);
-  window.quizSelection = quiz.slice(0, 20);
+  quizSelection = generateQuizSelection();
 
   document.querySelector(".quiz-container").innerHTML = `
     <h2 id="question"></h2>
@@ -855,7 +861,6 @@ function restartQuiz() {
 
   loadQuestion();
 }
-
 
 
 loadQuestion();
