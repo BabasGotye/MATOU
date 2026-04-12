@@ -803,6 +803,7 @@ let currentQuestion = 0;
 let score = 0;
 
 function loadQuestion() {
+  document.querySelectorAll("img").forEach(img => img.remove());
   const q = quizSelection[currentQuestion];
   document.getElementById("question").innerText = q.question;
   if (q.image) {
@@ -812,7 +813,7 @@ function loadQuestion() {
     img.style.marginTop = "10px";
     img.style.borderRadius = "8px";
 
-    document.getElementById("answers").appendChild(img);
+    document.getElementById("question").appendChild(img);
   }
   const answersDiv = document.getElementById("answers");
   const feedback = document.getElementById("feedback");
