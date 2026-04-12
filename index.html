@@ -659,6 +659,125 @@ const quiz = [
     answers: ["0.1 W", "0.2 W", "0.4 W", "0.5 W", "1 W", "2 W", "4 W", "5 W", "10 W", "40 W", "50 W"],
     correct: [3, 7]
   },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/TAP.png",
+    answers: ["Soutien sanitaire", "Troupes aéroportées", "Helicoptères"],
+    correct: 1
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/antichar.png",
+    answers: ["Antichar", "Reconnaissance", "Maintenance"],
+    correct: 0
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/artillerie.png",
+    answers: ["Artillerie", "Transport", "Génie"],
+    correct: 0
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/avion de cbt.png",
+    answers: ["Hélicoptère", "Troupes aéroportées", "Avions de combat"],
+    correct: 2
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/blindé chenille.png",
+    answers: ["Blindé roues", "Blindé chenilles", "Blindé"],
+    correct: 1
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/blindé roue.png",
+    answers: ["Blindé roues", "Blindé chenilles", "Blindé"],
+    correct: 0
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/genie.png",
+    answers: ["Transmissions", "Reconnaissance", "Génie"],
+    correct: 2
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/helico.png",
+    answers: ["Avions de combat", "Hélicoptère", "Transport"],
+    correct: 1
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/inf motorisée.png",
+    answers: ["Infanterie", "Infanterie mécanisée", "Infanterie motorisée"],
+    correct: 2
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/infanterie meca.png",
+    answers: ["Infanterie", "Infanterie mécanisée", "Infanterie motorisée"],
+    correct: 1
+  },
+  {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/infanterie.png",
+    answers: ["Infanterie", "Infanterie mécanisée", "Infanterie motorisée"],
+    correct: 0
+  },
+  {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/maintenancc.png",
+    answers: ["Transmissions", "Génie", "Maintenance"],
+    correct: 2
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/medic.png",
+    answers: ["Sanitaire", "Génie", "Transport"],
+    correct: 0
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/nrbc.png",
+    answers: ["Artillerie", "NRBC", "Transmissions"],
+    correct: 1
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/reconnaissance.png",
+    answers: ["Transmissions", "Antichar", "Reconnaissance"],
+    correct: 2
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/transmissions.png",
+    answers: ["Transmissions", "Génie", "Troupes aéroportées"],
+    correct: 0
+  },
+   {
+    type: "qcm",
+    question: "Quel est ce type d'unité ?",
+    image: "images/transport.png",
+    answers: ["Transmissions", "Maintenance", "Transport"],
+    correct: 2
+  },
   
 
 ];
@@ -686,6 +805,15 @@ let score = 0;
 function loadQuestion() {
   const q = quizSelection[currentQuestion];
   document.getElementById("question").innerText = q.question;
+  if (q.image) {
+    const img = document.createElement("img");
+    img.src = q.image;
+    img.style.maxWidth = "100%";
+    img.style.marginTop = "10px";
+    img.style.borderRadius = "8px";
+
+    document.getElementById("answers").appendChild(img);
+  }
   const answersDiv = document.getElementById("answers");
   const feedback = document.getElementById("feedback");
 
