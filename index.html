@@ -36,7 +36,7 @@
       color: white;
     }
     .selected {
-      background-color: #a5d6a7; /* vert clair */
+      background-color: #a5d6a7; 
     }
     .validate-btn {
     background-color: #2196F3;
@@ -980,14 +980,14 @@ function checkQCM(index, button) {
 
   const buttons = document.querySelectorAll("button");
 
-  // toggle sélection
+
   if (button.classList.contains("selected")) {
   button.classList.remove("selected");
   } else {
   button.classList.add("selected");
   }
 
-  // bouton valider (ajouté dynamiquement si pas déjà là)
+  
   if (!document.getElementById("validateBtn")) {
     const validateBtn = document.createElement("button");
     validateBtn.id = "validateBtn";
@@ -1015,7 +1015,7 @@ function checkQCM(index, button) {
         score++;
       }
 
-      // affichage visuel
+      
       buttons.forEach((btn, i) => {
         if (correctAnswers.includes(i)) {
           btn.classList.add("correct");
