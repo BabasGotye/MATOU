@@ -277,20 +277,20 @@ const quiz = [
   {type:"qcm",question:"Combien de sécurités possède le HK416 ?",answers:["1","2","3","4"],correct:2}
 ];
 
-const quizBase = JSON.parse(JSON.stringify(quiz));
+const quizBase = JSON.parse(JSON.stringify(quiz)); //copie le quiz
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
-  }
+  } //mélange aléatoirement
 }
 
 function generateQuizSelection(pool) {
   const copy = JSON.parse(JSON.stringify(pool || quizBase));
   shuffle(copy);
   return copy.slice(0, Math.min(20, copy.length));
-}
+} //20 questions
 
 let quizSelection = generateQuizSelection();
 let currentQuestion = 0;
@@ -298,9 +298,9 @@ let score = 0;
 let missedQuestions = []; // stocke les questions ratées
 
 function loadQuestion() {
-  document.querySelectorAll("#question img").forEach(img => img.remove());
+  document.querySelectorAll("#question img").forEach(img => img.remove()); //supprime images precedentes
   const q = quizSelection[currentQuestion];
-  document.getElementById("question").innerText = q.question;
+  document.getElementById("question").innerText = q.question; //affiche question
 
   if (q.image) {
     const img = document.createElement("img");
@@ -309,7 +309,7 @@ function loadQuestion() {
     img.style.marginTop = "10px";
     img.style.borderRadius = "8px";
     document.getElementById("question").appendChild(img);
-  }
+  } //affichage image
 
   const answersDiv = document.getElementById("answers");
   const feedback = document.getElementById("feedback");
@@ -320,7 +320,7 @@ function loadQuestion() {
     q.answers.forEach((answer, index) => {
       const btn = document.createElement("button");
       btn.innerText = answer;
-      btn.onclick = () => checkQCM(index, btn);
+      btn.onclick = () => checkQCM(index, btn); //plusieurs réponses
       answersDiv.appendChild(btn);
     });
   } else if (q.type === "text") {
@@ -362,7 +362,7 @@ function checkQCM(index, button) {
       });
       validateBtn.disabled = true;
 
-      let isCorrect =
+      let isCorrect = //correct ou non?
         selectedIndexes.length === correctAnswers.length &&
         selectedIndexes.every(i => correctAnswers.includes(i));
 
@@ -407,7 +407,7 @@ function levenshtein(a, b) {
     }
   }
   return matrix[b.length][a.length];
-}
+ //distance d'erreur <=2
 
 function checkText(value) {
   const user = normalize(value);
